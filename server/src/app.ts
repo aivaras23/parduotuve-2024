@@ -1,6 +1,8 @@
 import express, {Application, Request, Response} from 'express';
 import { skaiciuokleRouter } from './routes/skaiciuokle.router';
 import bodyParser from 'body-parser';
+import { corsHeaders } from './middlewares/cors.middleware';
+import { productsRouter } from './routes/products.router';
 
 const app:Application=express();
 
@@ -10,15 +12,10 @@ app.use(express.urlencoded());
 //Sutvarkomi duomenys jei buvo atsiustas JSON failas
 app.use(express.json());
 
-app.use((req:Request,res:Response, next)=>{
-    console.log("CORS");
+//i visus response headerius ikeliame CORS nurodymus
+app.use(corsHeaders);
 
-    res.setHeader("Access-Control-Allow-Origin","*");
-    res.setHeader("Access-Control-Allow-Headers","Origin, X-Request-With, Content-Type, Accept");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
-    next();
-});
-
+//Uzkrauname route faila (kur nurodyti skaiciuokles url)
 app.use('/skaiciuokle', skaiciuokleRouter);
 
 
