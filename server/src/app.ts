@@ -17,6 +17,7 @@ app.use(corsHeaders);
 
 //Uzkrauname route faila (kur nurodyti skaiciuokles url)
 app.use('/skaiciuokle', skaiciuokleRouter);
+app.use('/products',productsRouter);
 
 
 export {app};

@@ -5,6 +5,7 @@ import { ProductsController } from '../controllers/products.controller';
 const productsRouter=express.Router();
 
 productsRouter.get("/", ProductsController.getAll);
+productsRouter.get('/:id', ProductsController.getProduct);
 productsRouter.post("/", ProductsController.insert);
 productsRouter.put("/", ProductsController.update);
 productsRouter.delete("/", ProductsController.delete);

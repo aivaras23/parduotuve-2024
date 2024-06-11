@@ -1,0 +1,17 @@
+<div class="card mt-3">
+    <div class="card-header">Atnaujinti prekę</div>
+    <div class="card-body">
+        <form (ngSubmit)="productSubmit(f)" #f="ngForm">
+            <div class="mb-3">
+                <label for="" class="form-label">Pavadinimas</label>
+                <input type="text" class="form-control" name="name" value="" ngModel [(ngModel)]="name">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Kaina</label>
+                <input type="text" class="form-control" name="price" value="" ngModel [(ngModel)]="price">
+            </div>
+            <button class="btn btn-success" type="submit">Atnaujinti</button>
+        </form>
+
+    </div>
+</div>
