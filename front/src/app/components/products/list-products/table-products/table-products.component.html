@@ -1,20 +1,28 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nr</th>
-            <th>Pavadinimas</th>
-            <th>Kaina</th>
-            <th>Veiksmai</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products; let i = index">
-            <td>{{ i+1 }}</td>
-            <td>{{ product.name}}</td>
-            <td>{{ product.price }}</td>
-            <td>
-                <a class="btn btn-success" [routerLink]="['/products',product.id]">Redaguoti</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-header">Produktų sąrašas</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Pavadinimas</th>
+                    <th>Kaina</th>
+                    <th>Veiksmai</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products; let i=index;">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <a class="btn btn-success" [routerLink]="['/products',product.id]">Redaguoti</a>&nbsp;&nbsp;
+                        <button class="btn btn-danger" (click)="deleteProduct(product.id!)">Ištrinti</button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

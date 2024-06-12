@@ -7,7 +7,7 @@ import { Product } from '../models/product';
 })
 export class ProductsService {
 
-  // http://localhost:4999/products/ - cia yra visi produktai
+  // http://localhost:4999/products/   - čia yra visi produktai
   constructor(private http:HttpClient) { }
 
   public getProducts(){
@@ -24,5 +24,9 @@ export class ProductsService {
 
   public updateProduct(product:Product){
     return this.http.put('http://localhost:4999/products/',product);
+  }
+
+  public deleteProduct(id:number){
+    return this.http.delete('http://localhost:4999/products/'+id);
   }
 }

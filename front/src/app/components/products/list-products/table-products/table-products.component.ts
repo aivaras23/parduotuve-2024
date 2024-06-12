@@ -12,13 +12,25 @@ import { RouterLink } from '@angular/router';
   styleUrl: './table-products.component.css'
 })
 export class TableProductsComponent {
-
   public products:Product[]=[];
 
-  // Uzkraunamas kontruktorius
-   constructor(private productsService:ProductsService){
-    productsService.getProducts().subscribe((data)=> {
+  private loadProducts(){
+    this.productsService.getProducts().subscribe((data)=>{
       this.products=data;
     });
-   }
+  }
+
+  constructor (private productsService:ProductsService){
+    this.loadProducts();
+  }
+
+  public deleteProduct(id:number){
+    this.productsService.deleteProduct(id).subscribe((data)=>{
+      this.loadProducts();
+    });
+
+  }
+
+
+
 }
