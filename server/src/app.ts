@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { corsHeaders } from './middlewares/cors.middleware';
 import { productsRouter } from './routes/products.router';
 import { authRouter } from './routes/auth.router';
+import { authMiddleware } from './middlewares/auth.middleware';
 
 const app:Application=express();
 

@@ -15,4 +15,8 @@ export class ErrorComponent {
   @Input()
   public text:String="";
 
+  public onColoseError(){
+    this.isError=false;
+  }
+
 }

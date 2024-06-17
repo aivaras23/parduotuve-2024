@@ -7,7 +7,7 @@
                     <th>Nr</th>
                     <th>Pavadinimas</th>
                     <th>Kaina</th>
-                    <th>Veiksmai</th>
+                    <th *ngIf="authService.canEdit()">Veiksmai</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,7 +15,7 @@
                     <td>{{ i+1 }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
-                    <td>
+                    <td *ngIf="authService.canEdit()">
                         <a class="btn btn-success" [routerLink]="['/products',product.id]">Redaguoti</a>&nbsp;&nbsp;
                         <button class="btn btn-danger" (click)="deleteProduct(product.id!)">Ištrinti</button>
                     </td>
