@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header">Vartotojų sąrašas</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>El. pašto adresas</th>
+                    <th>Vardas</th>
+                    <th>Tipas</th>
+                    <th>Veiksmai</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let i=index;">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.type }}</td>
+                    <td>
+                        <a class="btn btn-success" [routerLink]="['/users',user.id]">Redaguoti</a>
+                    </td>
+
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -21,6 +21,6 @@ app.use(corsHeaders);
 app.use('/skaiciuokle', skaiciuokleRouter);
 app.use('/products',productsRouter);
 app.use('/auth', authRouter);
-
+app.use("/users", userRouter);
 
 export {app};
