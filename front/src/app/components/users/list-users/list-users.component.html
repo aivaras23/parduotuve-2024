@@ -16,9 +16,10 @@
                     <td>{{ i+1 }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.name }}</td>
-                    <td>{{ user.type }}</td>
+                    <td>{{ user.getTypeName() }}</td>
                     <td>
-                        <a class="btn btn-success" [routerLink]="['/users',user.id]">Redaguoti</a>
+                        <a class="btn btn-success mx-3" [routerLink]="['/users',user.id]">Redaguoti</a>
+                        <a class="btn btn-danger" (click)="onDeleteClick(user.id!)">Ištrinti</a>
                     </td>
 
 

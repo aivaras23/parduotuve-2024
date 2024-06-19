@@ -13,13 +13,27 @@ import { RouterModule } from '@angular/router';
 })
 export class ListUsersComponent {
   public users:User[]=[];
-  constructor (private usersService:UsersService){
+
+  private loadData(){
     this.usersService.getUsers().subscribe({
       next:(users)=>{
-        this.users=users
+        this.users=users;
+        console.log(this.users[0]);
       }
     });
+  }
 
+  constructor (private usersService:UsersService){
+    this.loadData();
+
+  }
+
+  public onDeleteClick(id:number){
+    this.usersService.deleteUser(id).subscribe({
+      next:(result)=>{
+        this.loadData();
+      }
+    })
   }
 
 }
