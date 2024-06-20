@@ -16,7 +16,7 @@ export class ProductsController{
 
     static async getProduct( req:any, res:any){
         console.log(req.params.id);
-        const sql="SELECT * FROM products WHERE id=?";
+        const sql="SELECT * FROM products WHERE id=? ";
         const [result]=await pool.query<Product[]>(sql,[req.params.id]);
         if (result.length==0){
             res.status(404).json({

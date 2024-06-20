@@ -1,1 +1,17 @@
-<p>home-page works!</p>
+<div class="row">
+    <div class="col-md-3 mt-3">
+        <div class="card">
+            <div class="card-header">Vartotojas</div>
+            <div class="card-body">
+                <img [src]="user?.img" alt="" class="img-fluid">
+                <hr>
+                <div>
+                    Vardas: <b> {{ user?.name }}</b>
+                </div>
+                <div>
+                    El. pašto adresas: <b> {{ user?.email }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
