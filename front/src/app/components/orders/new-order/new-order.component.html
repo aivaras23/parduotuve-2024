@@ -1,0 +1,66 @@
+<div class="card mt-3">
+    <div class="card-header">Pridėti naują užsakymą</div>
+    <div class="card-body">
+        <form id="ngForm" (ngSubmit)="orderSubmit(f)" #f="ngForm">
+            <h2>Užsakymo informacija</h2>
+            <div class="mb-3">
+                <label for="" class="form-label">Užsakovo vardas</label>
+                <input type="text" class="form-control" name="name" value="" ngModel minlength="2" maxlength="64" required #inputName="ngModel">
+            </div>
+            <div *ngIf="!inputName.valid && inputName.touched">Įvestas blogas pavadinimas</div>
+            <div class="mb-3">
+                <label for="" class="form-label">Užsakovo pavardė</label>
+                <input type="text" class="form-control" name="surname" value="" ngModel minlength="2" maxlength="64" required #inputSurname="ngModel">
+            </div>
+            <hr>
+        </form>
+        <h2>Užsakomos prekės</h2>
+        <div class="row">
+            <div class="col-md-5">
+                <select class="form-control" [(ngModel)]="productId">
+                    <option *ngFor="let product of products; let i=index" [value]="product.id">{{ product.name }} ({{ product.price }} EUR)</option>
+
+                </select>
+            </div>
+            <div class="col-md-5">
+                <input type="number" class="form-control" placeholder="Prekių kiekis" [(ngModel)]="count">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success" (click)="addProductToOrder()">Pridėti</button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Pavadinimas</th>
+                            <th>Kiekis</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let orderProduct of orderProducts; let i=index; ">
+                            <td>
+                                {{ getProductName(orderProduct.productId) }}
+                            </td>
+                            <td>
+                                {{ orderProduct.count }}
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+        <button class="btn btn-success " type="submit" form="ngForm">Pridėti</button>
+
+
+    </div>
+</div>
