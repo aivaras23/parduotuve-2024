@@ -6,7 +6,9 @@ export class Order{
         public order_date?:Date,
         public products?:{
             productId:number,
-            count:number
-        }
+            count:number,
+            name:string,
+            price:number
+        }[]
     ){}
 }

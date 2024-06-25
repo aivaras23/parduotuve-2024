@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { OrdersService } from '../../../services/orders.service';
 import { Product } from '../../../models/product';
 import { ProductsService } from '../../../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-order',
@@ -22,7 +23,7 @@ export class NewOrderComponent {
     count:number
   }[]=[];
 
-  constructor (private ordersService:OrdersService, private productsService:ProductsService){
+  constructor (private ordersService:OrdersService, private productsService:ProductsService, private router:Router){
     productsService.getProducts().subscribe({
       next:(products)=>{
         this.products=products;
@@ -35,7 +36,7 @@ export class NewOrderComponent {
   public orderSubmit(form:NgForm){
     this.ordersService.addOrder({...form.form.value, products:this.orderProducts}).subscribe({
       next:(result)=>{
-
+        this.router.navigate(["/orders", "list"]);
       }
     })
   }

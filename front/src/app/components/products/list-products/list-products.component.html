@@ -1,19 +1,8 @@
 <div class="row mt-3">
     <div class="col-md-3 col-lg-2 mb-3">
-        <div class="card">
-            <div class="card-body">
-                Cia bus musu filtracija ir kiti daiktai
-            </div>
-        </div>
+        <app-filter-products (filterChanged)="onFilterChanged($event)"></app-filter-products>
     </div>
     <div class="col-md-9 col-lg-10 mb-3">
-        <div class="card">
-            <div class="card-header">
-                <app-filter-products></app-filter-products>
-            </div>
-            <div class="card-body">
-                <app-table-products></app-table-products>
-            </div>
-        </div>
+        <app-table-products [filterText]="filter"></app-table-products>
     </div>
 </div>

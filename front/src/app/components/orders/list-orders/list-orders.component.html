@@ -1,1 +1,60 @@
-<p>list-orders works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Užsakymų sąrašas</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Užsakymo nr.</th>
+                            <th>Užsakovas</th>
+                            <th>Užsakytos prekės</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders; let i=index">
+                            <td>
+                                {{ order.id }}
+                            </td>
+                            <td>
+                                {{ order.name }} {{order.surname}}
+                            </td>
+                            <td>
+                                <table class="table" *ngIf="order.products!=null">
+                                    <thead>
+                                        <tr>
+                                            <th>Pavadinimas</th>
+                                            <th>Kaina</th>
+                                            <th>Kiekis</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let product of order.products; let y=index">
+                                            <td>
+                                                {{ product.name }}
+                                            </td>
+                                            <td>
+                                                {{ product.price }} EUR
+                                            </td>
+                                            <td>
+                                                {{ product.count }}
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteOrder(order.id)">Ištrinti</button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
